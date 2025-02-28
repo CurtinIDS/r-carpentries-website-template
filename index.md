@@ -388,13 +388,7 @@ please preview your site before committing, and make sure to run
   that may be useful on the
   <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
 </p>
-
-<p>
-  <a href="https://glosario.carpentries.org/en/">Glosario</a> is a multilingual glossary 
-  for computing and data science terms. The glossary helps 
-  learners who attend workshops and use our lessons to make sense of computational and programming jargon written in English by offering it 
-  in their native language. This glossary may be useful for looking up unknown terms while following the setup.
-</p>
+{% endif %}
 
 {% comment %}
 For online workshops, the section below provides:
