@@ -56,7 +56,6 @@ displayed if the 'eventbrite' field in the header is not set.
 </script>
 {% endif %}
 
-
 <h2 id="general">General Information</h2>
 
 {% comment %}
@@ -78,16 +77,8 @@ skills to researchers.
 Sign up to receive future editions and read our full archive: <a href="https://carpentries.org/newsletter/">https://carpentries.org/newsletter/</a>
   </em>
 </p>
-{% if site.carpentry == "swc" %}
-{% include swc/intro.html %}
-{% elsif site.carpentry == "dc" %}
+{% if site.carpentry == "dc" %}
 {% include dc/intro.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/intro.html %}
-{% endif %}
-
-{% if site.pilot %}
-This is a pilot workshop, testing out a lesson that is still under development. The lesson authors would appreciate any feedback you can give them about the lesson content and suggestions for how it could be further improved.
 {% endif %}
 
 {% comment %}
@@ -96,12 +87,8 @@ AUDIENCE
 Explain who your audience is.  (In particular, tell readers if the
 workshop is only open to people from a particular institution.
 {% endcomment %}
-{% if site.carpentry == "swc" %}
-{% include swc/who.html %}
-{% elsif site.carpentry == "dc" %}
+{% if site.carpentry == "dc" %}
 {% include dc/who.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/who.html %}
 {% endif %}
 
 {% comment %}
@@ -121,6 +108,16 @@ address.
 {% assign online = "false" %}
 {% endif %}
 {% if page.latitude and page.longitude and online == "false" %}
+
+<p id="who"> 
+  <strong>Who:</strong> <br>
+  The course is aimed at postgraduate students and other researchers.
+  <strong>
+    You don't need to have any previous knowledge of the tools
+    that will be presented at the workshop, but you will need basic computer literacy, including managing files on your laptop.
+  </strong>
+</p>
+
 <p id="where">
   <strong>Where:</strong>
   {{page.address}}.
@@ -128,24 +125,13 @@ address.
   <a href="//www.openstreetmap.org/?mlat={{page.latitude}}&mlon={{page.longitude}}&zoom=16">OpenStreetMap</a>
   or
   <a href="//maps.google.com/maps?q={{page.latitude}},{{page.longitude}}">Google Maps</a>.
+  or
+  <a href="{{page.mazemaps_url}}">Curtin Mazemaps</a>.
   {% if page.what3words %}
     What3Words location:
     <a href="https://what3words.com/{{page.what3words}}">///{{page.what3words}}</a>.
   {%endif %}
 </p>
-{% elsif online == "true_public" %}
-<p id="where">
-  <strong>Where:</strong>
-  online at <a href="{{page.address}}">{{page.address}}</a>.
-  If you need a password or other information to access the training,
-  the instructor will pass it on to you before the workshop.
-</p>
-{% elsif online == "true_private" %}
-<p id="where">
-  <strong>Where:</strong> This training will take place online.
-  The instructors will provide you with the information you will need to connect to this meeting.
-</p>
-{% endif %}
 
 {% comment %}
 DATE
@@ -167,13 +153,9 @@ Modify the block below if there are any special requirements.
 {% endcomment %}
 <p id="requirements">
   <strong>Requirements:</strong>
-  {% if online == "false" %}
     Participants must bring a laptop with a
-    Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on.
-  {% else %}
-    Participants must have access to a computer with a
-    Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on.
-  {% endif %}
+    Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on.   <br>
+
   They should have a few specific software packages installed (listed <a href="#setup">below</a>).
 </p>
 
@@ -257,11 +239,24 @@ Edit the text to match who can attend the workshop. For instance:
 - This workshop is open to the public.
 - If you are interested in attending this workshop, contact me@example.com
   for more information
+{% endcomment %}
 
 <p id="who-can-attend">
     <strong>Who can attend?:</strong>
-    This workshop is open to ....
+    This workshop is open to Curtin University researchers and HDR students.
 </p>
+
+<p id="before-attending">
+<strong>What do I need to do before attending?</strong> <br>
+  Before attending please ensure you've followed the <a href="#setup">setup</a> . This means you should have:  
+  <ol>
+    <li> Installed R </li>
+    <li> Installed R Studio </li>
+  </ol>
+  You can email <a href="mailto:curtinids@curtin.edu.au">curtinids@curtin.edu.au</a> if you need help. There will also be a short half-hour before the workshop if you require assistance.
+</p>
+{% comment%}
+CODE OF CONDUCT
 {% endcomment %}
 
 <hr/>
@@ -355,16 +350,7 @@ of code below the Schedule `<h2>` header below with
 
 <h2 id="schedule">Schedule</h2>
 
-{% if site.carpentry == "swc" %}
-{% include swc/schedule.html %}
-{% elsif site.carpentry == "dc" %}
-{% include dc/schedule.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/schedule.html %}
-{% elsif site.carpentry == "incubator" %}
-This workshop is teaching a lesson in 
-<a href="https://carpentries-incubator.org/">The Carpentries Incubator</a>. Please check <a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for a list of lesson sections and estimated timings.
-{% endif %}
+{% include schedule.html %}
 
 {% comment %}
 Edit/replace the text above if you want to include a schedule table.
@@ -372,12 +358,7 @@ See the contents of the _includes/custom-schedule.html file for an example of
 how one of these schedule tables is constructed.
 {% endcomment %}
 
-{% if site.pilot %}
-The lesson taught in this workshop is being piloted and a precise schedule is yet to be established. The workshop will include regular breaks. Please <a href="mailto:{{page.email}}">contact the workshop organisers</a> if you would like more information about the planned schedule.
-{% endif %}
-
 <hr/>
-
 
 {% comment %}
 SETUP
@@ -395,21 +376,24 @@ please preview your site before committing, and make sure to run
 
 <p>
   To participate in a
-  {% if site.carpentry == "swc" %}
-  Software Carpentry
-  {% elsif site.carpentry == "dc" %}
+  {% if site.carpentry == "dc" %}
   Data Carpentry
-  {% elsif site.carpentry == "lc" %}
-  Library Carpentry
   {% endif %}
   workshop,
-  you will need access to software as described below.
+  you <b><u>will</u><b> need access to software as described in the links below.
   In addition, you will need an up-to-date web browser.
 </p>
 <p>
   We maintain a list of common issues that occur during installation as a reference for instructors
   that may be useful on the
   <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
+</p>
+
+<p>
+  <a href="https://glosario.carpentries.org/en/">Glosario</a> is a multilingual glossary 
+  for computing and data science terms. The glossary helps 
+  learners who attend workshops and use our lessons to make sense of computational and programming jargon written in English by offering it 
+  in their native language. This glossary may be useful for looking up unknown terms while following the setup.
 </p>
 
 {% comment %}
@@ -431,14 +415,6 @@ These are the installation instructions for the tools used
 during the workshop.
 {% endcomment %}
 
-{% if site.carpentry == "swc" %}
-{% include swc/setup.html %}
-{% elsif site.carpentry == "dc" %}
+{% if site.carpentry == "dc" %}
 {% include dc/setup.html %}
-{% elsif site.carpentry == "lc" %}
-{% include lc/setup.html %}
-{% elsif site.carpentry == "incubator" %}
-Please check the "Setup" page of
-<a href="{{site.incubator_lesson_site}}">the lesson homepage</a> for instructions to follow
-to obtain the software and data you will need to follow the lesson.
 {% endif %}
