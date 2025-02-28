@@ -87,9 +87,14 @@ AUDIENCE
 Explain who your audience is.  (In particular, tell readers if the
 workshop is only open to people from a particular institution.
 {% endcomment %}
-{% if site.carpentry == "dc" %}
-{% include dc/who.html %}
-{% endif %}
+<p id="who"> 
+  <strong>Who:</strong>
+  The course is aimed at postgraduate students and other researchers.
+  <strong>
+    You don't need to have any previous knowledge of the tools
+    that will be presented at the workshop, but you will need basic computer literacy, including managing files on your laptop.
+  </strong>
+</p>
 
 {% comment %}
 LOCATION
@@ -109,15 +114,6 @@ address.
 {% endif %}
 {% if page.latitude and page.longitude and online == "false" %}
 
-<p id="who"> 
-  <strong>Who:</strong> <br>
-  The course is aimed at postgraduate students and other researchers.
-  <strong>
-    You don't need to have any previous knowledge of the tools
-    that will be presented at the workshop, but you will need basic computer literacy, including managing files on your laptop.
-  </strong>
-</p>
-
 <p id="where">
   <strong>Where:</strong>
   {{page.address}}.
@@ -132,6 +128,7 @@ address.
     <a href="https://what3words.com/{{page.what3words}}">///{{page.what3words}}</a>.
   {%endif %}
 </p>
+{% endif %}
 
 {% comment %}
 DATE
@@ -170,7 +167,7 @@ special instructions.
   We are committed to making this workshop
   accessible to everybody. 
 {% if online == "false" %}
-  The workshop organizers have checked that:
+  The workshop organisers have checked that:
 <p>
   <ul>
     <li>The room is wheelchair / scooter accessible.</li>
@@ -256,9 +253,6 @@ Edit the text to match who can attend the workshop. For instance:
   </ol>
   You can email <a href="mailto:curtinids@curtin.edu.au">curtinids@curtin.edu.au</a> if you need help. There will also be a short 15-mins before the workshop if you require assistance.
 </p>
-{% comment%}
-CODE OF CONDUCT
-{% endcomment %}
 
 <hr/>
 
@@ -374,7 +368,7 @@ please preview your site before committing, and make sure to run
 {% endcomment %}
 
 <h2 id="setup">Setup</h2>
-{% endif %}
+
 <p>
   To participate in a
   {% if site.carpentry == "dc" %}
