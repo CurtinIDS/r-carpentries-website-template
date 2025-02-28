@@ -252,6 +252,7 @@ Edit the text to match who can attend the workshop. For instance:
   <ol>
     <li> Installed R </li>
     <li> Installed R Studio </li>
+    <li> Access to the <a href="https://github.com/CurtinIDS/CIDS_Carpentries_R_materials">CIDS R Material</a> </li>
   </ol>
   You can email <a href="mailto:curtinids@curtin.edu.au">curtinids@curtin.edu.au</a> if you need help. There will also be a short 15-mins before the workshop if you require assistance.
 </p>
