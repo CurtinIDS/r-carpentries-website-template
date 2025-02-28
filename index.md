@@ -248,7 +248,7 @@ Edit the text to match who can attend the workshop. For instance:
 
 <p id="before-attending">
 <strong>What do I need to do before attending?</strong> <br>
-  Before attending please ensure you've followed the <a href="#setup">setup</a> . This means you should have:  
+  Before attending please ensure you've followed the <a href="#setup">setup</a>. This means you should have:  
   <ol>
     <li> Installed R </li>
     <li> Installed R Studio </li>
