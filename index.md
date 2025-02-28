@@ -253,7 +253,7 @@ Edit the text to match who can attend the workshop. For instance:
     <li> Installed R </li>
     <li> Installed R Studio </li>
   </ol>
-  You can email <a href="mailto:curtinids@curtin.edu.au">curtinids@curtin.edu.au</a> if you need help. There will also be a short half-hour before the workshop if you require assistance.
+  You can email <a href="mailto:curtinids@curtin.edu.au">curtinids@curtin.edu.au</a> if you need help. There will also be a short 15-mins before the workshop if you require assistance.
 </p>
 {% comment%}
 CODE OF CONDUCT
@@ -380,7 +380,7 @@ please preview your site before committing, and make sure to run
   Data Carpentry
   {% endif %}
   workshop,
-  you <b><u>will</u><b> need access to software as described in the links below.
+  you <b><u>will</u></b> need access to software as described in the links below.
   In addition, you will need an up-to-date web browser.
 </p>
 <p>
@@ -388,27 +388,4 @@ please preview your site before committing, and make sure to run
   that may be useful on the
   <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
 </p>
-{% endif %}
-
-{% comment %}
-For online workshops, the section below provides:
-- installation instructions for the Zoom client
-- recommendations for setting up Learners' workspace so they can follow along
-  the instructions and the videoconferencing
-
-If you do not use Zoom for your online workshop, edit the file
-`_includes/install_instructions/videoconferencing.html`
-to include the relevant installation instructions.
-{% endcomment %}
-{% if online != "false" %}
-{% include install_instructions/videoconferencing.html %}
-{% endif %}
-
-{% comment %}
-These are the installation instructions for the tools used
-during the workshop.
-{% endcomment %}
-
-{% if site.carpentry == "dc" %}
-{% include dc/setup.html %}
 {% endif %}
