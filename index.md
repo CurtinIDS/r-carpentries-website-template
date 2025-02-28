@@ -374,7 +374,7 @@ please preview your site before committing, and make sure to run
 {% endcomment %}
 
 <h2 id="setup">Setup</h2>
-
+{% endif %}
 <p>
   To participate in a
   {% if site.carpentry == "dc" %}
